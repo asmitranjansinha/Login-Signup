@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/login_page.dart';
+import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/utils/routes.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.introRoute:(context) => const IntroPage(),
         AppRoutes.loginRoute:(context) => const LoginPage(),
+        AppRoutes.signupRoute:(context) => const SignUp(),
       }
     );
   }

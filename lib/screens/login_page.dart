@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_signup/utils/routes.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
@@ -75,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white54,
+                  backgroundColor: Colors.grey[300],
                   padding:
                       const EdgeInsets.symmetric(horizontal: 70, vertical: 13),
                   shape: const StadiumBorder()),
@@ -96,15 +97,21 @@ class _LoginPageState extends State<LoginPage> {
                 const Text(
                   "don't have an account?",
                   style: TextStyle(
-                      color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                      color: Colors.indigo,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, AppRoutes.signupRoute, (route) => false);
+                  },
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(
-                        color: Colors.deepPurple,
+                        color: Colors.indigo,
                         fontWeight: FontWeight.bold,
+                        fontSize: 16,
                         decoration: TextDecoration.underline),
                   ),
                 )

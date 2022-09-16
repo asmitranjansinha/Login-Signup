@@ -75,7 +75,7 @@ class _IntroPageState extends State<IntroPage> {
             ),
             ElevatedButton(
               onPressed: () {
-
+                Navigator.pushNamedAndRemoveUntil(context, AppRoutes.signupRoute, (route) => false);
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white54,

@@ -55,7 +55,8 @@ class _IntroPageState extends State<IntroPage> {
             const SizedBox(height: 100.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(context, AppRoutes.loginRoute, (route) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoutes.loginRoute, (route) => false);
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white54,
@@ -75,7 +76,8 @@ class _IntroPageState extends State<IntroPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(context, AppRoutes.signupRoute, (route) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoutes.signupRoute, (route) => false);
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white54,

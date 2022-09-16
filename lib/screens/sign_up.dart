@@ -33,7 +33,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.white,
                       fontSize: 45,
                       fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.robotoSlab().fontFamily),
+                      fontFamily: GoogleFonts.notoSans().fontFamily),
                 ),
                 const SizedBox(
                   height: 65,
@@ -135,7 +135,7 @@ class _SignUpState extends State<SignUp> {
                         fillColor: Colors.white54),
                   ),
                 ),
-                const SizedBox(height: 35),
+                const SizedBox(height: 50),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(

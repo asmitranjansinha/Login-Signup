@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_signup/utils/routes.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroPage extends StatefulWidget {
@@ -53,7 +54,9 @@ class _IntroPageState extends State<IntroPage> {
             ),
             const SizedBox(height: 100.0),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(context, AppRoutes.loginRoute, (route) => false);
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white54,
                   padding:
@@ -71,7 +74,9 @@ class _IntroPageState extends State<IntroPage> {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white54,
                   padding:

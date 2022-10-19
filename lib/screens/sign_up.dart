@@ -45,7 +45,7 @@ class _SignUpState extends State<SignUp> {
                     style: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
-                        icon: const Icon(
+                        prefixIcon: const Icon(
                           FeatherIcons.user,
                           size: 25,
                           color: Colors.blueGrey,
@@ -54,7 +54,7 @@ class _SignUpState extends State<SignUp> {
                         hintStyle: const TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none),
                         filled: true,
                         fillColor: Colors.white54),
@@ -70,7 +70,7 @@ class _SignUpState extends State<SignUp> {
                     style: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
-                        icon: const Icon(
+                        prefixIcon: const Icon(
                           FeatherIcons.mail,
                           size: 25,
                           color: Colors.blueGrey,
@@ -79,7 +79,7 @@ class _SignUpState extends State<SignUp> {
                         hintStyle: const TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none),
                         filled: true,
                         fillColor: Colors.white54),
@@ -92,10 +92,11 @@ class _SignUpState extends State<SignUp> {
                   width: 330,
                   height: 50,
                   child: TextFormField(
+                    obscureText: true,
                     style: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
-                        icon: const Icon(
+                        prefixIcon: const Icon(
                           FeatherIcons.lock,
                           size: 25,
                           color: Colors.blueGrey,
@@ -104,7 +105,7 @@ class _SignUpState extends State<SignUp> {
                         hintStyle: const TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none),
                         filled: true,
                         fillColor: Colors.white54),
@@ -117,10 +118,11 @@ class _SignUpState extends State<SignUp> {
                   width: 330,
                   height: 50,
                   child: TextFormField(
+                    obscureText: true,
                     style: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
-                        icon: const Icon(
+                        prefixIcon: const Icon(
                           FeatherIcons.lock,
                           size: 25,
                           color: Colors.blueGrey,
@@ -129,7 +131,7 @@ class _SignUpState extends State<SignUp> {
                         hintStyle: const TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none),
                         filled: true,
                         fillColor: Colors.white54),
@@ -143,16 +145,12 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 70, vertical: 13),
                       shape: const StadiumBorder()),
-                  child: Text(
-                    'S I G N U P',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                        fontFamily: GoogleFonts.robotoSlab().fontFamily),
-                  ),
+                  child: const Text('S I G N U P',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black54)),
                 ),
                 const SizedBox(
-                  height: 75,
+                  height: 55,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -160,9 +158,7 @@ class _SignUpState extends State<SignUp> {
                     const Text(
                       "already have an account?",
                       style: TextStyle(
-                          color: Colors.indigo,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                          color: Colors.indigo, fontWeight: FontWeight.bold),
                     ),
                     TextButton(
                       onPressed: () {
@@ -174,7 +170,6 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyle(
                             color: Colors.indigo,
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
                             decoration: TextDecoration.underline),
                       ),
                     )

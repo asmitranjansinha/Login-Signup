@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: GoogleFonts.montserrat().fontFamily),
+      theme: ThemeData(fontFamily: GoogleFonts.openSans().fontFamily),
       debugShowCheckedModeBanner: false,
       home: const IntroPage(),
 

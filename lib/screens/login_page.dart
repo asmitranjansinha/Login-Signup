@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: const TextStyle(
                     color: Colors.grey, fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
-                    icon: const Icon(
+                    prefixIcon: const Icon(
                       FeatherIcons.mail,
                       size: 25,
                       color: Colors.blueGrey,
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintStyle: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide.none),
                     filled: true,
                     fillColor: Colors.white54),
@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.grey, fontWeight: FontWeight.bold),
                 obscureText: true,
                 decoration: InputDecoration(
-                    icon: const Icon(
+                    prefixIcon: const Icon(
                       FeatherIcons.lock,
                       size: 25,
                       color: Colors.blueGrey,
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintStyle: const TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide.none),
                     filled: true,
                     fillColor: Colors.white54),
@@ -85,11 +85,25 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
-                    fontFamily: GoogleFonts.robotoSlab().fontFamily),
+                    fontFamily: GoogleFonts.openSans().fontFamily),
               ),
             ),
             const SizedBox(
-              height: 100,
+              height: 10,
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text(
+                "Forgot Password?",
+                style: TextStyle(
+                  color: Colors.indigo,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 70,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -97,9 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                 const Text(
                   "don't have an account?",
                   style: TextStyle(
-                      color: Colors.indigo,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                      color: Colors.indigo, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
                   onPressed: () {
@@ -111,7 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                         color: Colors.indigo,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
                         decoration: TextDecoration.underline),
                   ),
                 )

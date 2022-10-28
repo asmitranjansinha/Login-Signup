@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/utils/routes.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
+import 'package:login_signup/widgets/social_icon.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroPage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -34,11 +35,14 @@ class _IntroPageState extends State<IntroPage> {
               child: Column(
             children: [
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
-              Lottie.network(
-                  'https://assets8.lottiefiles.com/packages/lf20_khtt8ejx.json',
-                  fit: BoxFit.contain),
+              SizedBox(
+                height: 250,
+                child: Lottie.asset(
+                    'assets/images/85795-man-and-woman-say-hi.json',
+                    fit: BoxFit.contain),
+              ),
               const SizedBox(
                 height: 80,
               ),
@@ -58,7 +62,7 @@ class _IntroPageState extends State<IntroPage> {
                     fontSize: 15,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 100.0),
+              const SizedBox(height: 80.0),
               AppButton(
                   txt: "L O G I N",
                   route: () {
@@ -73,7 +77,28 @@ class _IntroPageState extends State<IntroPage> {
                   route: () {
                     Navigator.pushNamedAndRemoveUntil(
                         context, AppRoutes.signupRoute, (route) => false);
-                  })
+                  }),
+              const SizedBox(
+                height: 70,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SocialButtons(
+                      img: "assets/images/Google-Logo-PNG-HD-Quality.png"),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  SocialButtons(
+                      img:
+                          "assets/images/Facebook-logo-blue-circle-large-transparent-png.png"),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  SocialButtons(
+                      img: "assets/images/twitter-3-logo-png-transparent.png")
+                ],
+              )
             ],
           )),
         ),

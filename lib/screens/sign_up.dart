@@ -3,10 +3,11 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-import '../utils/routes.dart';
+import 'login_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
+  static const route = 'signup_page';
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -162,8 +163,8 @@ class _SignUpState extends State<SignUp> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, AppRoutes.loginRoute, (route) => false);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            LoginPage.route, (route) => false);
                       },
                       child: const Text(
                         "Log In",

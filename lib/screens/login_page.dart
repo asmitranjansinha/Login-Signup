@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_signup/utils/routes.dart';
+import 'package:login_signup/screens/sign_up.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+  static const route = 'login_page';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -115,8 +116,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, AppRoutes.signupRoute, (route) => false);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        SignUp.route, (route) => false);
                   },
                   child: const Text(
                     "Sign Up",

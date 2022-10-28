@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_signup/utils/routes.dart';
+import 'package:login_signup/screens/login_page.dart';
+import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:login_signup/widgets/social_icon.dart';
 import 'package:lottie/lottie.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
+  static const route = 'intro_page';
 
   @override
   State<IntroPage> createState() => _IntroPageState();
@@ -66,8 +68,8 @@ class _IntroPageState extends State<IntroPage> {
               AppButton(
                   txt: "L O G I N",
                   route: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, AppRoutes.loginRoute, (route) => false);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        LoginPage.route, (route) => false);
                   }),
               const SizedBox(
                 height: 30,
@@ -75,8 +77,8 @@ class _IntroPageState extends State<IntroPage> {
               AppButton(
                   txt: "S I G N U P",
                   route: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, AppRoutes.signupRoute, (route) => false);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        SignUp.route, (route) => false);
                   }),
               const SizedBox(
                 height: 70,

@@ -5,16 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppButton extends StatelessWidget {
   final txt;
-  final route;
+  final Function() route;
 
   const AppButton({super.key, required this.txt, required this.route});
 
   @override
   Widget build(Object context) {
     return ElevatedButton(
-      onPressed: () {
-        route;
-      },
+      onPressed: route,
       style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white54,
           padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 13),

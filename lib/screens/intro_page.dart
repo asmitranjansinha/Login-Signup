@@ -75,7 +75,7 @@ class _IntroPageState extends State<IntroPage> {
                 height: 30,
               ),
               AppButton(
-                  txt: "S I G N U P",
+                  txt: "S I G N  U P",
                   route: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         SignUp.route, (route) => false);

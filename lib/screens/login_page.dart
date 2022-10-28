@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_signup/screens/home_page.dart';
 import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
@@ -104,7 +105,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 22),
-                  AppButton(txt: "L O G I N", route: () {}),
+                  AppButton(
+                      txt: "L O G I N",
+                      route: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, HomePage.route, (route) => false);
+                      }),
                   const SizedBox(height: 130),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

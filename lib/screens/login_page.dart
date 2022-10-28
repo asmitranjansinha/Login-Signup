@@ -7,6 +7,8 @@ import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:login_signup/widgets/input_field.dart';
 import 'package:lottie/lottie.dart';
 
+import '../widgets/social_icon.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
   static const route = 'login_page';
@@ -73,13 +75,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 10),
                   SizedBox(
                       height: 200,
                       child: Lottie.asset(
                           "assets/images/113519-cyber-security.json")),
                   const SizedBox(
-                    height: 40,
+                    height: 10,
                   ),
                   const InputField(
                     icon: Icons.mail_lock_outlined,
@@ -104,14 +106,14 @@ class _LoginPageState extends State<LoginPage> {
                           fontFamily: GoogleFonts.lato().fontFamily),
                     ),
                   ),
-                  const SizedBox(height: 22),
+                  const SizedBox(height: 30),
                   AppButton(
                       txt: "L O G I N",
                       route: () {
                         Navigator.pushNamedAndRemoveUntil(
                             context, HomePage.route, (route) => false);
                       }),
-                  const SizedBox(height: 130),
+                  const SizedBox(height: 60),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -134,6 +136,24 @@ class _LoginPageState extends State<LoginPage> {
                               fontFamily: GoogleFonts.lato().fontFamily),
                         ),
                       )
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const Text("_________________________",
+                      style: TextStyle(color: Colors.white)),
+                  const SizedBox(height: 22),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SocialButtons(img: "assets/images/google.png"),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      SocialButtons(img: "assets/images/facebook.png"),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      SocialButtons(img: "assets/images/twitter.png")
                     ],
                   )
                 ],

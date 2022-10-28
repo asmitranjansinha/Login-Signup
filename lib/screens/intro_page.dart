@@ -80,25 +80,22 @@ class _IntroPageState extends State<IntroPage> {
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         SignUp.route, (route) => false);
                   }),
-              const SizedBox(
-                height: 70,
-              ),
+              const SizedBox(height: 30),
+              const Text("_________________________",
+                  style: TextStyle(color: Colors.white)),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  SocialButtons(
-                      img: "assets/images/Google-Logo-PNG-HD-Quality.png"),
+                  SocialButtons(img: "assets/images/google.png"),
                   SizedBox(
                     width: 30,
                   ),
-                  SocialButtons(
-                      img:
-                          "assets/images/Facebook-logo-blue-circle-large-transparent-png.png"),
+                  SocialButtons(img: "assets/images/facebook.png"),
                   SizedBox(
                     width: 30,
                   ),
-                  SocialButtons(
-                      img: "assets/images/twitter-3-logo-png-transparent.png")
+                  SocialButtons(img: "assets/images/twitter.png")
                 ],
               )
             ],

@@ -1,13 +1,16 @@
+// ignore_for_file: file_names, must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/widgets/input_field.dart';
 
 class ResetPassword extends StatelessWidget {
   String email = "";
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Color(0xFF804FB3),
+      backgroundColor: const Color(0xFF804FB3),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -42,9 +45,12 @@ class ResetPassword extends StatelessWidget {
                 "Send Request",
                 style: TextStyle(
                     color: Colors.black54,
-                    fontFamily: GoogleFonts.montserrat().fontFamily),
+                    fontFamily: GoogleFonts.montserrat().fontFamily,
+                    fontWeight: FontWeight.w600),
               ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         )
       ],
     );

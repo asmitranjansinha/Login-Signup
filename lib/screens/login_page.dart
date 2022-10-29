@@ -5,6 +5,7 @@ import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:login_signup/widgets/input_field.dart';
+import 'package:login_signup/widgets/reset_password,.dart';
 import 'package:lottie/lottie.dart';
 
 import '../widgets/social_icon.dart';
@@ -105,7 +106,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 22),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () async {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return ResetPassword();
+                              });
+                        },
                         child: Text(
                           "forgot password ?",
                           style: TextStyle(

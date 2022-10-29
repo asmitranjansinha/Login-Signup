@@ -15,6 +15,10 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String name = "";
+  String email = "";
+  String password = "";
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -62,7 +66,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       Text(
-                        'Register Now !',
+                        'Sign Up Now !',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
@@ -80,37 +84,44 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     height: 50,
                   ),
-                  const InputField(
-                    icon: Icons.perm_identity,
-                    hintxt: 'Name',
-                    obscureText: false,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const InputField(
-                    icon: Icons.mail_lock_outlined,
-                    hintxt: 'Mail',
-                    obscureText: false,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const InputField(
-                    icon: Icons.lock_open_outlined,
-                    hintxt: "Password",
-                    obscureText: true,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const InputField(
-                    icon: Icons.lock,
-                    hintxt: "Confirm Password",
-                    obscureText: true,
-                  ),
-                  const SizedBox(height: 40),
-                  AppButton(txt: "S I G N  U P", route: () {}),
+                  Form(
+                      child: Column(
+                    children: [
+                      InputField(
+                        icon: Icons.perm_identity,
+                        hintxt: 'Name',
+                        obscureText: false,
+                        saveinput: null,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InputField(
+                        icon: Icons.mail_lock_outlined,
+                        hintxt: 'Mail',
+                        obscureText: false,
+                        saveinput: null,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InputField(
+                        icon: Icons.lock_open_outlined,
+                        hintxt: "Password",
+                        obscureText: true,
+                        saveinput: null,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InputField(
+                          icon: Icons.lock,
+                          hintxt: "Confirm Password",
+                          obscureText: true),
+                      const SizedBox(height: 40),
+                      AppButton(txt: "S I G N  U P", route: () {}),
+                    ],
+                  )),
                   const SizedBox(height: 100),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

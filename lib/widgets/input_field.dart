@@ -6,8 +6,15 @@ class InputField extends StatelessWidget {
   final icon;
   final String hintxt;
   final bool obscureText;
+  var saveinput;
 
-  const InputField({super.key, required this.icon, required this.hintxt, required this.obscureText,});
+  InputField({
+    super.key,
+    required this.icon,
+    required this.hintxt,
+    required this.obscureText,
+    this.saveinput,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,7 @@ class InputField extends StatelessWidget {
       child: TextFormField(
         obscureText: obscureText,
         decoration: InputDecoration(
-            prefixIcon: Icon(icon, size: 25),
+            prefixIcon: Icon(icon, size: 25, color: Colors.black54),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(3),
                 borderSide: BorderSide.none),
@@ -25,6 +32,15 @@ class InputField extends StatelessWidget {
             hintText: hintxt,
             prefixIconColor: Colors.purple,
             hintStyle: const TextStyle(color: Colors.black54)),
+        onChanged: (value) {
+          saveinput = value;
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "$hintxt cannot be empty";
+          }
+          return null;
+        },
       ),
     );
   }

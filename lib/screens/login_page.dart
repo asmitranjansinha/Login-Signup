@@ -18,6 +18,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String email = "";
+  String password = "";
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -83,36 +85,43 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const InputField(
-                    icon: Icons.mail_lock_outlined,
-                    hintxt: 'Mail',
-                    obscureText: false,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const InputField(
-                    icon: Icons.lock_open_outlined,
-                    hintxt: "Password",
-                    obscureText: true,
-                  ),
-                  const SizedBox(height: 22),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "forgot password ?",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: GoogleFonts.lato().fontFamily),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  AppButton(
-                      txt: "L O G I N",
-                      route: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, HomePage.route, (route) => false);
-                      }),
+                  Form(
+                      child: Column(
+                    children: [
+                      InputField(
+                        icon: Icons.mail_lock_outlined,
+                        hintxt: 'Mail',
+                        obscureText: false,
+                        saveinput: email,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InputField(
+                        icon: Icons.lock_open_outlined,
+                        hintxt: "Password",
+                        obscureText: true,
+                        saveinput: password,
+                      ),
+                      const SizedBox(height: 22),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          "forgot password ?",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: GoogleFonts.lato().fontFamily),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      AppButton(
+                          txt: "L O G I N",
+                          route: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, HomePage.route, (route) => false);
+                          }),
+                    ],
+                  )),
                   const SizedBox(height: 60),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

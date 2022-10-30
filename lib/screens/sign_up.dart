@@ -127,44 +127,48 @@ class _SignUpState extends State<SignUp> {
                           height: 50,
                         ),
                         Form(
+                            key: _formkey,
                             child: Column(
-                          children: [
-                            InputField(
-                              icon: Icons.perm_identity,
-                              hintxt: 'Name',
-                              obscureText: false,
-                              saveinput: fullName,
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            InputField(
-                              icon: Icons.mail_lock_outlined,
-                              hintxt: 'Mail',
-                              obscureText: false,
-                              saveinput: email,
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            InputField(
-                              icon: Icons.lock_open_outlined,
-                              hintxt: "Password",
-                              obscureText: true,
-                              saveinput: password,
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            InputField(
-                                icon: Icons.lock,
-                                hintxt: "Confirm Password",
-                                obscureText: true),
-                            const SizedBox(height: 40),
-                            AppButton(
-                                txt: "S I G N  U P", route: () => signUp()),
-                          ],
-                        )),
+                              children: [
+                                InputField(
+                                  icon: Icons.perm_identity,
+                                  hintxt: 'Name',
+                                  obscureText: false,
+                                  saveinput: fullName,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputField(
+                                  icon: Icons.mail_lock_outlined,
+                                  hintxt: 'Mail',
+                                  obscureText: false,
+                                  saveinput: email,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputField(
+                                  icon: Icons.lock_open_outlined,
+                                  hintxt: "Password",
+                                  obscureText: true,
+                                  saveinput: password,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputField(
+                                    icon: Icons.lock,
+                                    hintxt: "Confirm Password",
+                                    obscureText: true),
+                                const SizedBox(height: 40),
+                                AppButton(
+                                    txt: "S I G N  U P",
+                                    route: () {
+                                      signUp();
+                                    }),
+                              ],
+                            )),
                         const SizedBox(height: 100),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

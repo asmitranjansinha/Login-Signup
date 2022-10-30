@@ -8,7 +8,7 @@ import 'package:login_signup/screens/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences prefs;
-Future main() async{
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   prefs = await SharedPreferences.getInstance();
@@ -21,17 +21,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: GoogleFonts.openSans().fontFamily),
-      debugShowCheckedModeBanner: false,
-      home: const IntroPage(),
-
-      routes: {
-        IntroPage.route:(context) => const IntroPage(),
-        LoginPage.route:(context) => const LoginPage(),
-        SignUp.route:(context) => const SignUp(),
-        HomePage.route:(context) => const HomePage(),
-
-      }
-    );
+        theme: ThemeData(
+            fontFamily: GoogleFonts.openSans().fontFamily,
+            primarySwatch: Colors.purple),
+        debugShowCheckedModeBanner: false,
+        home: const IntroPage(),
+        routes: {
+          IntroPage.route: (context) => const IntroPage(),
+          LoginPage.route: (context) => const LoginPage(),
+          SignUp.route: (context) => const SignUp(),
+          HomePage.route: (context) => const HomePage(),
+        });
   }
 }

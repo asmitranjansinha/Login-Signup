@@ -31,7 +31,8 @@ class _SignUpState extends State<SignUp> {
       await authService
           .registerUserWithEmailandPassword(fullName, email, password)
           .then((value) async {
-        if (value == true) {
+        log("sign up");
+        if (value = true) {
           await HelperFunction.saveUserLoggedInStatus(true);
           await HelperFunction.saveUserEmailSF(email);
           await HelperFunction.saveUserNameSF(fullName);
@@ -160,7 +161,8 @@ class _SignUpState extends State<SignUp> {
                                 InputField(
                                     icon: Icons.lock,
                                     hintxt: "Confirm Password",
-                                    obscureText: true),
+                                    obscureText: true,
+                                    saveinput: null,),
                                 const SizedBox(height: 40),
                                 AppButton(
                                     txt: "S I G N  U P",

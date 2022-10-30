@@ -13,7 +13,7 @@ class InputField extends StatelessWidget {
     required this.icon,
     required this.hintxt,
     required this.obscureText,
-    this.saveinput,
+    required this.saveinput,
   });
 
   @override

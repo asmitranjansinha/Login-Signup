@@ -7,6 +7,7 @@ class InputField extends StatelessWidget {
   final String hintxt;
   final bool obscureText;
   var saveinput;
+  final fieldcontroller;
 
   InputField({
     super.key,
@@ -14,6 +15,7 @@ class InputField extends StatelessWidget {
     required this.hintxt,
     required this.obscureText,
     required this.saveinput,
+    required this.fieldcontroller
   });
 
   @override
@@ -21,6 +23,7 @@ class InputField extends StatelessWidget {
     return SizedBox(
       width: 300,
       child: TextFormField(
+        controller: fieldcontroller,
         obscureText: obscureText,
         decoration: InputDecoration(
             prefixIcon: Icon(icon, size: 25, color: Colors.black54),

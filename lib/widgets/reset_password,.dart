@@ -6,6 +6,7 @@ import 'package:login_signup/widgets/input_field.dart';
 
 class ResetPassword extends StatelessWidget {
   String email = "";
+  final _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class ResetPassword extends StatelessWidget {
         icon: Icons.mail_lock_outlined,
         hintxt: "Email",
         obscureText: false,
-        saveinput: email,
+        saveinput: email, fieldcontroller: _emailController,
       ),
       actions: [
         Center(

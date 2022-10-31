@@ -1,38 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:login_signup/main.dart';
 
 class HelperFunction {
   static String userLoggedInKey = "LOGGEDINKEY";
   static String userNameKey = "USERNAMEKEY";
   static String userEmailKey = "USEREMAILKEY";
+  static String userId = "USERID";
 
   static Future<bool> saveUserLoggedInStatus(bool isUserLoggedIn) async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return await sf.setBool(userLoggedInKey, isUserLoggedIn);
+    return await prefs.setBool(userLoggedInKey, isUserLoggedIn);
   }
 
   static Future<bool> saveUserNameSF(String userName) async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return await sf.setString(userNameKey, userName);
+    return await prefs.setString(userNameKey, userName);
   }
 
   static Future<bool> saveUserEmailSF(String userEmail) async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return await sf.setString(userEmailKey, userEmail);
+    return await prefs.setString(userEmailKey, userEmail);
+  }
+
+  static Future<bool> saveUserId(String uid) async {
+    return await prefs.setString(userId, uid);
   }
 
   static Future<bool?> getUserLoggedInStatus() async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return sf.getBool(userLoggedInKey);
+    return prefs.getBool(userLoggedInKey);
+  }
+
+  static Future<String?> getUserId() async {
+    return prefs.getString(userId);
   }
 
   static Future<String?> getUserNameFromSf() async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return sf.getString(userNameKey);
+    return prefs.getString(userNameKey);
   }
 
   static Future<String?> getUserEmailFromSF() async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return sf.getString(userEmailKey);
+    return prefs.getString(userEmailKey);
   }
 }

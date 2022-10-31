@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup/auth-database/auth_services.dart';
 import 'package:login_signup/screens/login_page.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'intro_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -58,8 +61,9 @@ class _HomePageState extends State<HomePage> {
             AppButton(
                 txt: "L O G O U T",
                 route: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, LoginPage.route, (route) => false);
+                  AuthService().signOut().then((value) =>
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, IntroPage.route, (route) => false));
                 })
           ],
         )),

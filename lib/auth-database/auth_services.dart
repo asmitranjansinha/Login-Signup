@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login_signup/auth-database/database_services.dart';
 
@@ -15,6 +17,8 @@ class AuthService {
 
       if (user != null) {
         await DatabaseServices(uid: user.uid).savingUserData(fullName, email);
+        await HelperFunction.saveUserId(user.uid);
+        await HelperFunction.saveUserLoggedInStatus(true);
         return true;
       }
     } on FirebaseAuthException catch (e) {
@@ -28,6 +32,8 @@ class AuthService {
               email: email, password: password))
           .user!;
       if (user != null) {
+        await HelperFunction.saveUserId(user.uid);
+        await HelperFunction.saveUserLoggedInStatus(true);
         return true;
       }
     } on FirebaseAuthException catch (e) {

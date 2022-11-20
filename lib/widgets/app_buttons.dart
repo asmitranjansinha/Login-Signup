@@ -14,6 +14,7 @@ class AppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: route,
       style: ElevatedButton.styleFrom(
+          elevation: 18,
           backgroundColor: Colors.white54,
           padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 13),
           shape: const StadiumBorder()),

@@ -13,7 +13,7 @@ import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:login_signup/widgets/input_field.dart';
-import 'package:login_signup/widgets/reset_password,.dart';
+import 'package:login_signup/widgets/reset_password.dart';
 import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
 

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login_signup/screens/home_page.dart';
 import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
@@ -55,7 +56,22 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
     log("message");
-    Get.to(() => const HomePage());
+    Get.to(() => HomePage());
+  }
+
+  Future loginGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      print(FirebaseAuth.instance.signInWithCredential(credential));
+      Get.to(() => HomePage());
+    } on FirebaseAuthException catch (e) {
+      log(e.message.toString());
+      rethrow;
+    }
   }
 
   @override
@@ -198,16 +214,25 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 22),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      SocialButtons(img: "assets/images/google.png"),
-                      SizedBox(
+                    children: [
+                      SocialButtons(
+                        img: "assets/images/google.png",
+                        ontap: loginGoogle,
+                      ),
+                      const SizedBox(
                         width: 30,
                       ),
-                      SocialButtons(img: "assets/images/facebook.png"),
-                      SizedBox(
+                      const SocialButtons(
+                        img: "assets/images/facebook.png",
+                        ontap: null,
+                      ),
+                      const SizedBox(
                         width: 30,
                       ),
-                      SocialButtons(img: "assets/images/twitter.png")
+                      const SocialButtons(
+                        img: "assets/images/twitter.png",
+                        ontap: null,
+                      )
                     ],
                   )
                 ],

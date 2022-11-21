@@ -6,14 +6,12 @@ class SocialButtons extends StatelessWidget {
   final img;
   final ontap;
 
-  const SocialButtons({super.key, required this.img, this.ontap});
+  const SocialButtons({super.key, required this.img, required this.ontap});
 
   @override
   Widget build(Object context) {
     return GestureDetector(
-        onTap: () {
-          ontap;
-        },
+        onTap: ontap,
         child: Image(image: AssetImage(img), width: 30));
   }
 }

@@ -6,7 +6,7 @@ import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
   static const route = 'home_page';
 
   @override

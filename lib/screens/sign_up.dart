@@ -31,7 +31,7 @@ class _SignUpState extends State<SignUp> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
     log("Signed Up");
-    Get.to(() => HomePage());
+    Get.to(() => const HomePage());
   }
 
   showLoading(context) {

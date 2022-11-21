@@ -14,10 +14,10 @@ class AppButton extends StatelessWidget {
     return GestureDetector(
       onTap: func,
       child: Container(
-        height: 50,
-        width: 210,
+        height: 46.5,
+        width: 200,
         decoration: BoxDecoration(boxShadow: const [
-          BoxShadow(blurRadius: 18, offset: Offset(0, 7), color: Colors.black54)
+          BoxShadow(blurRadius: 18, offset: Offset(2, 10), color: Colors.black38)
         ], color: Colors.white54, borderRadius: BorderRadius.circular(100)),
         child: Center(
           child: Text(

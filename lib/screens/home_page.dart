@@ -5,14 +5,21 @@ import 'package:login_signup/screens/login_page.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
   static const route = 'home_page';
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   Future logOut() async {
     await FirebaseAuth.instance.signOut();
     Get.to(() => const LoginPage());
   }
+
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +60,8 @@ class HomePage extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 30),
             ),
             const SizedBox(height: 20),
-            const Text("Email :",
-                style: TextStyle(color: Colors.white, fontSize: 30)),
+            Text("Email : ${user.email}",
+                style: const TextStyle(color: Colors.white, fontSize: 30)),
             const SizedBox(height: 50),
             AppButton(txt: "L O G O U T", func: logOut)
           ],

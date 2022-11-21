@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
     log("message");
-    Get.to(() => const HomePage());
+    Get.to(() => HomePage());
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/screens/login_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
@@ -74,18 +75,16 @@ class _IntroPageState extends State<IntroPage> {
                   const SizedBox(height: 120.0),
                   AppButton(
                       txt: "L O G I N",
-                      route: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                            LoginPage.route, (route) => false);
+                      func: () {
+                        Get.to(() => const LoginPage());
                       }),
                   const SizedBox(
                     height: 30,
                   ),
                   AppButton(
                       txt: "S I G N  U P",
-                      route: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                            SignUp.route, (route) => false);
+                      func: () {
+                        Get.to(() => const SignUp());
                       }),
                 ],
               )),

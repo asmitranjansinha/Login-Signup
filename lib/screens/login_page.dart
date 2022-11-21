@@ -1,20 +1,16 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_signup/auth-database/auth_services.dart';
-import 'package:login_signup/auth-database/database_services.dart';
-import 'package:login_signup/helper/helper_function.dart';
 import 'package:login_signup/screens/home_page.dart';
 import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:login_signup/widgets/input_field.dart';
 import 'package:login_signup/widgets/reset_password.dart';
-import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
 
 import '../widgets/social_icon.dart';
@@ -28,27 +24,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Future logIn() async {
-    showLoading(context);
-    await authService
-        .signInWithEmailandPassword(email, password)
-        .then((value) async {
-      if (value == true) {
-        QuerySnapshot snapshot =
-            await DatabaseServices(uid: FirebaseAuth.instance.currentUser!.uid)
-                .gettingUserData(email);
-        await HelperFunction.saveUserLoggedInStatus(true);
-        await HelperFunction.saveUserEmailSF(email);
-        await HelperFunction.saveUserNameSF(snapshot.docs[0]['fullName']);
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false);
-      } else {
-        showSnackBar(context, value, Colors.black45);
-      }
-    });
-  }
-
   showLoading(context) {
     showDialog(
         context: context,
@@ -72,11 +47,25 @@ class _LoginPageState extends State<LoginPage> {
         });
   }
 
-  String email = "";
-  String password = "";
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  AuthService authService = AuthService();
+
+  Future logIn() async {
+    log("Signed In");
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+    log("message");
+    Get.to(() => const HomePage());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -148,7 +137,6 @@ class _LoginPageState extends State<LoginPage> {
                         icon: Icons.mail_lock_outlined,
                         hintxt: 'Mail',
                         obscureText: false,
-                        saveinput: email,
                         fieldcontroller: _emailController,
                       ),
                       const SizedBox(
@@ -158,7 +146,6 @@ class _LoginPageState extends State<LoginPage> {
                         icon: Icons.lock_open_outlined,
                         hintxt: "Password",
                         obscureText: true,
-                        saveinput: password,
                         fieldcontroller: _passwordController,
                       ),
                       const SizedBox(height: 22),
@@ -178,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      AppButton(txt: "L O G I N", route: () => logIn()),
+                      AppButton(txt: "L O G I N", func: logIn),
                     ],
                   ),
                   const SizedBox(height: 60),

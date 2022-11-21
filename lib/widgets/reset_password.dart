@@ -36,7 +36,7 @@ class ResetPassword extends StatelessWidget {
         icon: Icons.mail_lock_outlined,
         hintxt: "Email",
         obscureText: false,
-        saveinput: email, fieldcontroller: _emailController,
+        fieldcontroller: _emailController,
       ),
       actions: [
         Center(

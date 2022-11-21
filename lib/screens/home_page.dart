@@ -1,21 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login_signup/auth-database/auth_services.dart';
+import 'package:get/get.dart';
 import 'package:login_signup/screens/login_page.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
-import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'intro_page.dart';
-
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
   static const route = 'home_page';
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+  Future logOut() async {
+    await FirebaseAuth.instance.signOut();
+    Get.to(() => const LoginPage());
+  }
 
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +56,7 @@ class _HomePageState extends State<HomePage> {
             const Text("Email :",
                 style: TextStyle(color: Colors.white, fontSize: 30)),
             const SizedBox(height: 50),
-            AppButton(
-                txt: "L O G O U T",
-                route: () {
-                  AuthService().signOut().then((value) =>
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, IntroPage.route, (route) => false));
-                })
+            AppButton(txt: "L O G O U T", func: logOut)
           ],
         )),
       ),

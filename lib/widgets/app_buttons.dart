@@ -5,24 +5,30 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppButton extends StatelessWidget {
   final txt;
-  final Function() route;
+  final func;
 
-  const AppButton({super.key, required this.txt, required this.route});
+  const AppButton({super.key, required this.txt, required this.func});
 
   @override
   Widget build(Object context) {
-    return ElevatedButton(
-      onPressed: route,
-      style: ElevatedButton.styleFrom(
-          elevation: 18,
-          backgroundColor: Colors.white54,
-          padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 13),
-          shape: const StadiumBorder()),
-      child: Text(txt,
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black54,
-              fontFamily: GoogleFonts.robotoSlab().fontFamily)),
+    return GestureDetector(
+      onTap: func,
+      child: Container(
+        height: 50,
+        width: 210,
+        decoration: BoxDecoration(boxShadow: const [
+          BoxShadow(blurRadius: 18, offset: Offset(0, 7), color: Colors.black54)
+        ], color: Colors.white54, borderRadius: BorderRadius.circular(100)),
+        child: Center(
+          child: Text(
+            txt,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black54,
+                fontFamily: GoogleFonts.robotoSlab().fontFamily),
+          ),
+        ),
+      ),
     );
   }
 }

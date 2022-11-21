@@ -2,11 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_signup/helper/helper_function.dart';
-import 'package:login_signup/screens/home_page.dart';
-import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
-import '../auth-database/auth_services.dart';
 import '../widgets/app_buttons.dart';
 import '../widgets/input_field.dart';
 import 'intro_page.dart';
@@ -21,32 +17,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String fullName = "";
-  String email = "";
-  String password = "";
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  AuthService authService = AuthService();
 
   Future signUp() async {
-    showLoading(context);
-    await authService
-        .registerUserWithEmailandPassword(fullName, email, password)
-        .then((value) async {
-      if (value == true) {
-        await HelperFunction.saveUserLoggedInStatus(true);
-        await HelperFunction.saveUserNameSF(fullName);
-        await HelperFunction.saveUserEmailSF(email);
-        await HelperFunction.saveUserNameSF(fullName);
 
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false);
-      } else {
-        showSnackBar(context, Colors.red, value);
-      }
-    });
   }
 
   showLoading(context) {
@@ -143,7 +119,6 @@ class _SignUpState extends State<SignUp> {
                         icon: Icons.perm_identity,
                         hintxt: 'Name',
                         obscureText: false,
-                        saveinput: fullName,
                         fieldcontroller: _nameController,
                       ),
                       const SizedBox(
@@ -153,7 +128,6 @@ class _SignUpState extends State<SignUp> {
                         icon: Icons.mail_lock_outlined,
                         hintxt: 'Mail',
                         obscureText: false,
-                        saveinput: email,
                         fieldcontroller: _emailController,
                       ),
                       const SizedBox(
@@ -163,15 +137,12 @@ class _SignUpState extends State<SignUp> {
                         icon: Icons.lock_open_outlined,
                         hintxt: "Password",
                         obscureText: true,
-                        saveinput: password,
                         fieldcontroller: _passwordController,
                       ),
                       const SizedBox(height: 40),
                       AppButton(
                           txt: "S I G N  U P",
-                          route: () {
-                            signUp();
-                          }),
+                          func: signUp()),
                     ],
                   ),
                   const SizedBox(height: 100),

@@ -1,7 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_signup/screens/home_page.dart';
 import 'package:lottie/lottie.dart';
 import '../widgets/app_buttons.dart';
 import '../widgets/input_field.dart';
@@ -22,7 +27,11 @@ class _SignUpState extends State<SignUp> {
   final _passwordController = TextEditingController();
 
   Future signUp() async {
-
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+    log("Signed Up");
+    Get.to(() => const HomePage());
   }
 
   showLoading(context) {
@@ -140,9 +149,7 @@ class _SignUpState extends State<SignUp> {
                         fieldcontroller: _passwordController,
                       ),
                       const SizedBox(height: 40),
-                      AppButton(
-                          txt: "S I G N  U P",
-                          func: signUp()),
+                      AppButton(txt: "S I G N  U P", func: signUp),
                     ],
                   ),
                   const SizedBox(height: 100),

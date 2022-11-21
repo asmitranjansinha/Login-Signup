@@ -57,11 +57,11 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 150),
             const Text(
               "Name : ",
-              style: TextStyle(color: Colors.white, fontSize: 30),
+              style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             const SizedBox(height: 20),
             Text("Email : ${user.email}",
-                style: const TextStyle(color: Colors.white, fontSize: 30)),
+                style: const TextStyle(color: Colors.white, fontSize: 25)),
             const SizedBox(height: 50),
             AppButton(txt: "L O G O U T", func: logOut)
           ],

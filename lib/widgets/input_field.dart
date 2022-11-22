@@ -8,13 +8,15 @@ class InputField extends StatelessWidget {
   final bool obscureText;
   var saveinput;
   final fieldcontroller;
+  final type;
 
   InputField(
       {super.key,
       required this.icon,
       required this.hintxt,
       required this.obscureText,
-      required this.fieldcontroller});
+      required this.fieldcontroller,
+      required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class InputField extends StatelessWidget {
             border: Border.all(color: const Color(0xFF9969C7)),
             borderRadius: BorderRadius.circular(6)),
         child: TextFormField(
+          keyboardType: type,
           controller: fieldcontroller,
           obscureText: obscureText,
           decoration: InputDecoration(

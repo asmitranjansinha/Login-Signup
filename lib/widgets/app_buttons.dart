@@ -18,7 +18,7 @@ class AppButton extends StatelessWidget {
         width: 200,
         decoration: BoxDecoration(boxShadow: const [
           BoxShadow(blurRadius: 18, offset: Offset(2, 10), color: Colors.black38)
-        ], color: Colors.white54, borderRadius: BorderRadius.circular(100)),
+        ], color: Colors.white70, borderRadius: BorderRadius.circular(100)),
         child: Center(
           child: Text(
             txt,

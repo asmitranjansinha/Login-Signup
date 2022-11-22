@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/screens/home_page.dart';
+import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
 import '../widgets/app_buttons.dart';
 import '../widgets/input_field.dart';
@@ -27,11 +28,15 @@ class _SignUpState extends State<SignUp> {
   final _passwordController = TextEditingController();
 
   Future signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-    log("Signed Up");
-    Get.to(() => HomePage());
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+      log("Signed Up");
+      Get.to(() => HomePage());
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message, Colors.black38);
+    }
   }
 
   showLoading(context) {
@@ -129,6 +134,7 @@ class _SignUpState extends State<SignUp> {
                         hintxt: 'Name',
                         obscureText: false,
                         fieldcontroller: _nameController,
+                        type: TextInputType.name,
                       ),
                       const SizedBox(
                         height: 20,
@@ -138,6 +144,7 @@ class _SignUpState extends State<SignUp> {
                         hintxt: 'Mail',
                         obscureText: false,
                         fieldcontroller: _emailController,
+                        type: TextInputType.emailAddress,
                       ),
                       const SizedBox(
                         height: 20,
@@ -147,6 +154,7 @@ class _SignUpState extends State<SignUp> {
                         hintxt: "Password",
                         obscureText: true,
                         fieldcontroller: _passwordController,
+                        type: TextInputType.visiblePassword,
                       ),
                       const SizedBox(height: 40),
                       AppButton(txt: "S I G N  U P", func: signUp),

@@ -47,6 +47,7 @@ class ResetPassword extends StatelessWidget {
         hintxt: "Email",
         obscureText: false,
         fieldcontroller: _emailController,
+        type: TextInputType.emailAddress,
       ),
       actions: [
         Center(

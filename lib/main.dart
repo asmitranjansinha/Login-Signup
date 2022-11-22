@@ -6,6 +6,7 @@ import 'package:login_signup/auth-database/main_page.dart';
 import 'package:login_signup/screens/home_page.dart';
 import 'package:login_signup/screens/intro_page.dart';
 import 'package:login_signup/screens/login_page.dart';
+import 'package:login_signup/screens/profile_page.dart';
 import 'package:login_signup/screens/sign_up.dart';
 
 void main() async {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           LoginPage.route: (context) => const LoginPage(),
           SignUp.route: (context) => const SignUp(),
           HomePage.route: (context) => HomePage(),
+          ProfilePage.route: (context) => ProfilePage(),
         });
   }
 }

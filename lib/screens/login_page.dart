@@ -12,6 +12,7 @@ import 'package:login_signup/screens/sign_up.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:login_signup/widgets/input_field.dart';
 import 'package:login_signup/widgets/reset_password.dart';
+import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
 
 import '../widgets/social_icon.dart';
@@ -50,25 +51,42 @@ class _LoginPageState extends State<LoginPage> {
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   Future logIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-    log("message");
-    Get.to(() => HomePage());
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+      log("message");
+      Get.to(() => HomePage());
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      showSnackBar(context, e.message, Colors.black38);
+    }
   }
 
   Future loginGoogle() async {
     try {
+      setState(() {
+        _isLoading = true;
+      });
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
       print(FirebaseAuth.instance.signInWithCredential(credential));
-      Get.to(() => HomePage());
+      Get.to(HomePage());
     } on FirebaseAuthException catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
       log(e.message.toString());
       rethrow;
     }
@@ -92,152 +110,159 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.purple[200],
-        body: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                    Color(0xFF552586),
-                    Color(0xFF6A359C),
-                    Color(0xFF804FB3),
-                    Color(0xFF9969C7),
-                  ])),
-              child: SafeArea(
-                  child: Column(
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        backgroundColor: const Color(0xFF6A359C),
+        body: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(
+                color: Colors.white54,
+              ))
+            : SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                        Color(0xFF552586),
+                        Color(0xFF6A359C),
+                        Color(0xFF804FB3),
+                        Color(0xFF9969C7),
+                      ])),
+                  child: SafeArea(
+                      child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, IntroPage.route, (route) => false);
-                        },
-                        child: const Icon(
-                          Icons.arrow_back_ios_new,
-                          color: Colors.white60,
-                        ),
-                      ),
-                      Text(
-                        'LOGIN !',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            fontFamily:
-                                GoogleFonts.montserratAlternates().fontFamily),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                      height: 200,
-                      child: Lottie.asset(
-                          "assets/images/113519-cyber-security.json")),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    children: [
-                      InputField(
-                        icon: Icons.mail_lock_outlined,
-                        hintxt: 'Mail',
-                        obscureText: false,
-                        fieldcontroller: _emailController,
-                      ),
                       const SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
-                      InputField(
-                        icon: Icons.lock_open_outlined,
-                        hintxt: "Password",
-                        obscureText: true,
-                        fieldcontroller: _passwordController,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, IntroPage.route, (route) => false);
+                            },
+                            child: const Icon(
+                              Icons.arrow_back_ios_new,
+                              color: Colors.white60,
+                            ),
+                          ),
+                          Text(
+                            'LOGIN !',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.montserratAlternates()
+                                    .fontFamily),
+                          ),
+                        ],
                       ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                          height: 200,
+                          child: Lottie.asset(
+                              "assets/images/113519-cyber-security.json")),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Column(
+                        children: [
+                          InputField(
+                            icon: Icons.mail_lock_outlined,
+                            hintxt: 'Mail',
+                            obscureText: false,
+                            fieldcontroller: _emailController,
+                            type: TextInputType.emailAddress,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          InputField(
+                            icon: Icons.lock_open_outlined,
+                            hintxt: "Password",
+                            obscureText: true,
+                            fieldcontroller: _passwordController,
+                            type: TextInputType.visiblePassword,
+                          ),
+                          const SizedBox(height: 22),
+                          GestureDetector(
+                            onTap: () async {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return ResetPassword();
+                                  });
+                            },
+                            child: Text(
+                              "forgot password ?",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: GoogleFonts.lato().fontFamily),
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          AppButton(txt: "L O G I N", func: logIn),
+                        ],
+                      ),
+                      const SizedBox(height: 60),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "first time here ?",
+                            style: TextStyle(
+                                fontFamily: GoogleFonts.lato().fontFamily,
+                                color: Colors.white),
+                          ),
+                          const SizedBox(width: 8),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, SignUp.route, (route) => false);
+                            },
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: GoogleFonts.lato().fontFamily),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      const Text("_________________________",
+                          style: TextStyle(color: Colors.white)),
                       const SizedBox(height: 22),
-                      GestureDetector(
-                        onTap: () async {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return ResetPassword();
-                              });
-                        },
-                        child: Text(
-                          "forgot password ?",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.lato().fontFamily),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      AppButton(txt: "L O G I N", func: logIn),
-                    ],
-                  ),
-                  const SizedBox(height: 60),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "first time here ?",
-                        style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            color: Colors.white),
-                      ),
-                      const SizedBox(width: 8),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, SignUp.route, (route) => false);
-                        },
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.lato().fontFamily),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SocialButtons(
+                            img: "assets/images/google.png",
+                            ontap: loginGoogle,
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          const SocialButtons(
+                            img: "assets/images/facebook.png",
+                            ontap: null,
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          const SocialButtons(
+                            img: "assets/images/twitter.png",
+                            ontap: null,
+                          )
+                        ],
                       )
                     ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Text("_________________________",
-                      style: TextStyle(color: Colors.white)),
-                  const SizedBox(height: 22),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SocialButtons(
-                        img: "assets/images/google.png",
-                        ontap: loginGoogle,
-                      ),
-                      const SizedBox(
-                        width: 30,
-                      ),
-                      const SocialButtons(
-                        img: "assets/images/facebook.png",
-                        ontap: null,
-                      ),
-                      const SizedBox(
-                        width: 30,
-                      ),
-                      const SocialButtons(
-                        img: "assets/images/twitter.png",
-                        ontap: null,
-                      )
-                    ],
-                  )
-                ],
-              )),
-            )),
+                  )),
+                )),
       ),
     );
   }

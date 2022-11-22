@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_signup/screens/login_page.dart';
+import 'package:login_signup/screens/profile_page.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -51,16 +52,16 @@ class HomePage extends StatelessWidget {
                   fontSize: 23,
                   fontFamily: GoogleFonts.montserrat().fontFamily),
             ),
-            const SizedBox(height: 150),
-            const Text(
-              "Name : ",
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            const SizedBox(height: 20),
-            Text("Email : ${user!.email}",
-                style: const TextStyle(color: Colors.white, fontSize: 25)),
             const SizedBox(height: 50),
-            AppButton(txt: "L O G O U T", func: logOut)
+            AppButton(txt: "L O G O U T", func: logOut),
+            const SizedBox(
+              height: 20,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Get.to(ProfilePage());
+                },
+                child: const Text("Profile")),
           ],
         )),
       ),

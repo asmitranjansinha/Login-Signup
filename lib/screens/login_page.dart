@@ -88,9 +88,15 @@ class _LoginPageState extends State<LoginPage>
       Get.offAll(HomePage());
     } on FirebaseAuthException catch (e) {
       setState(() {
-        _controller.reverse();
+        _controller.stop();
       });
       log(e.message.toString());
+      rethrow;
+    } on Exception catch (e) {
+      setState(() {
+        _controller.stop();
+      });
+      log(e.toString());
       rethrow;
     }
   }

@@ -82,7 +82,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+   #fonts:
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
@@ -93,6 +93,38 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+     - family: ArcaMajora3
+       fonts:
+         - asset: fonts/ArcaMajora3-Bold.ttf
+         - asset: fonts/ArcaMajora3-Heavy.ttf
+           weight: 700
+     - family: BwQuintaPro
+       fonts:
+         - asset: fonts/BwQuintaPro-Black.ttf
+         - asset: fonts/BwQuintaPro-BlackItalic.ttf
+         - asset: fonts/BwQuintaPro-Bold.ttf
+         - asset: fonts/BwQuintaPro-BoldItalic.ttf
+         - asset: fonts/BwQuintaPro-Light.ttf
+         - asset: fonts/BwQuintaPro-LightItalic.ttf
+         - asset: fonts/BwQuintaPro-Medium.ttf
+         - asset: fonts/BwQuintaPro-MediumItalic.ttf
+         - asset: fonts/BwQuintaPro-Regular.ttf
+         - asset: fonts/BwQuintaPro-RegularItalic.ttf
+           weight: 700
+           style: italic
+     - family: Fox&Cat
+       fonts:
+         - asset: fonts/Fox&Cat.ttf
+     - family: Kanji_PA
+       fonts:
+         - asset: fonts/Kanji_PA.ttf
+     - family: koliko
+       fonts:
+         - asset: fonts/koliko-Bold.ttf  
+         - asset: fonts/koliko-Light.ttf  
+         - asset: fonts/koliko-Regular.ttf
+           weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

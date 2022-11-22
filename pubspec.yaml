@@ -40,7 +40,6 @@ dependencies:
   get: ^4.6.5
   firebase_auth:
   firebase_core:
-  cloud_firestore:
   google_sign_in: ^5.4.2
   flutter_facebook_auth: ^5.0.6
 

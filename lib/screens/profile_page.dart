@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
-  static const route = "profile_page";
 
   var user = FirebaseAuth.instance.currentUser;
 

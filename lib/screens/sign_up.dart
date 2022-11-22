@@ -16,7 +16,6 @@ import 'login_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
-  static const route = 'signup_page';
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -77,8 +76,7 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, IntroPage.route, (route) => false);
+                          Get.offAll(const IntroPage());
                         },
                         child: const Icon(
                           Icons.arrow_back_ios_new,
@@ -150,8 +148,7 @@ class _SignUpState extends State<SignUp> {
                       const SizedBox(width: 8),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, LoginPage.route, (route) => false);
+                          Get.offAll(const LoginPage());
                         },
                         child: Text(
                           "Log In",

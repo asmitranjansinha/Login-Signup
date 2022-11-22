@@ -20,7 +20,6 @@ import '../widgets/social_icon.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
-  static const route = 'login_page';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -139,8 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, IntroPage.route, (route) => false);
+                              Get.offAll(const IntroPage());
                             },
                             child: const Icon(
                               Icons.arrow_back_ios_new,
@@ -218,8 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(width: 8),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, SignUp.route, (route) => false);
+                              Get.offAll(const SignUp());
                             },
                             child: Text(
                               "Sign Up",

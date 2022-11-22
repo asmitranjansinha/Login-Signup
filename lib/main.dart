@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/auth-database/main_page.dart';
-import 'package:login_signup/screens/home_page.dart';
-import 'package:login_signup/screens/intro_page.dart';
-import 'package:login_signup/screens/login_page.dart';
-import 'package:login_signup/screens/profile_page.dart';
-import 'package:login_signup/screens/sign_up.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,13 +20,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             fontFamily: GoogleFonts.openSans().fontFamily,
             primarySwatch: Colors.purple),
-        debugShowCheckedModeBanner: false,
-        routes: {
-          IntroPage.route: (context) => const IntroPage(),
-          LoginPage.route: (context) => const LoginPage(),
-          SignUp.route: (context) => const SignUp(),
-          HomePage.route: (context) => HomePage(),
-          ProfilePage.route: (context) => ProfilePage(),
-        });
+        debugShowCheckedModeBanner: false);
   }
 }

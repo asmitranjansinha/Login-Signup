@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login_signup/screens/login_page.dart';
 import 'package:login_signup/screens/profile_page.dart';
 import 'package:login_signup/widgets/app_buttons.dart';
@@ -11,7 +10,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  static const route = 'home_page';
 
   Future logOut() async {
     await FirebaseAuth.instance.signOut();

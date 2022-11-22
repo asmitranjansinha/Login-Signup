@@ -11,7 +11,6 @@ import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
 import '../widgets/app_buttons.dart';
 import '../widgets/input_field.dart';
-import 'intro_page.dart';
 import 'login_page.dart';
 
 class SignUp extends StatefulWidget {
@@ -71,28 +70,14 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.offAll(const IntroPage());
-                        },
-                        child: const Icon(
-                          Icons.arrow_back_ios_new,
-                          color: Colors.white60,
-                        ),
-                      ),
-                      Text(
-                        'Sign Up Now !',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            fontFamily:
-                                GoogleFonts.montserratAlternates().fontFamily),
-                      ),
-                    ],
+                  Text(
+                    'Sign Up Now !',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        fontFamily:
+                            GoogleFonts.montserratAlternates().fontFamily),
                   ),
                   const SizedBox(height: 40),
                   SizedBox(

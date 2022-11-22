@@ -8,7 +8,6 @@ import 'package:lottie/lottie.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
-  static const route = 'intro_page';
 
   @override
   State<IntroPage> createState() => _IntroPageState();

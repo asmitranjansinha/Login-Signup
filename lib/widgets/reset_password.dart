@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/widgets/input_field.dart';
@@ -12,10 +13,21 @@ class ResetPassword extends StatelessWidget {
   final _emailController = TextEditingController();
 
   Future forgotPassword() async {
-    await FirebaseAuth.instance
-        .sendPasswordResetEmail(email: _emailController.text.trim());
-    log("reset password email sent");
-    Get.back();
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _emailController.text.trim());
+      log("reset password email sent");
+      Get.back();
+    } on FirebaseAuthException catch (e) {
+      Fluttertoast.showToast(
+          backgroundColor: Colors.black38,
+          msg: "${e.message}",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          textColor: Colors.white,
+          fontSize: 12.0);
+    }
   }
 
   @override

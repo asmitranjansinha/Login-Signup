@@ -55,21 +55,22 @@ class _IntroPageState extends State<IntroPage> {
                   const SizedBox(
                     height: 80,
                   ),
-                  Text(
-                    'Hello !',
+                  const Text(
+                    'Hello!',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 55,
                         fontWeight: FontWeight.bold,
-                        fontFamily: GoogleFonts.robotoSlab().fontFamily),
+                        fontFamily: 'ArcaMajora3-Bold'),
                   ),
-                  const SizedBox(height: 1.0),
+                  const SizedBox(height: 5),
                   const Text(
                     'How are you doing today?',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Fox&Cat'),
                   ),
                   const SizedBox(height: 120.0),
                   AppButton(

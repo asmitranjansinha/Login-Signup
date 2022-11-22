@@ -17,15 +17,17 @@ class AppButton extends StatelessWidget {
         height: 46.5,
         width: 200,
         decoration: BoxDecoration(boxShadow: const [
-          BoxShadow(blurRadius: 18, offset: Offset(2, 10), color: Colors.black38)
+          BoxShadow(
+              blurRadius: 18, offset: Offset(2, 10), color: Colors.black38)
         ], color: Colors.white70, borderRadius: BorderRadius.circular(100)),
         child: Center(
           child: Text(
             txt,
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
+            style: const TextStyle(
+                fontSize: 18.5,
+                fontWeight: FontWeight.w600,
                 color: Colors.black54,
-                fontFamily: GoogleFonts.robotoSlab().fontFamily),
+                fontFamily: "Kanji_PA"),
           ),
         ),
       ),

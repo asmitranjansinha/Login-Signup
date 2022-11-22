@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -48,10 +49,10 @@ class _LoginPageState extends State<LoginPage>
       log("message");
       Get.offAll(HomePage());
     } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message, Colors.black38);
       setState(() {
         _controller.stop();
       });
-      showSnackBar(context, e.message, Colors.black38);
     }
   }
 
@@ -106,6 +107,7 @@ class _LoginPageState extends State<LoginPage>
     _controller.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -153,15 +155,14 @@ class _LoginPageState extends State<LoginPage>
                           color: Colors.white60,
                         ),
                       ),
-                      Text(
-                        'LOGIN !',
+                      const Text(
+                        'LOGIN',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
-                            fontFamily:
-                                GoogleFonts.montserratAlternates().fontFamily),
-                      ),
+                            fontFamily: 'ArcaMajora3-Bold'),
+                      )
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -193,19 +194,32 @@ class _LoginPageState extends State<LoginPage>
                         type: TextInputType.visiblePassword,
                       ),
                       const SizedBox(height: 22),
-                      GestureDetector(
-                        onTap: () async {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return ResetPassword();
-                              });
-                        },
-                        child: Text(
-                          "forgot password ?",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.lato().fontFamily),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 150),
+                        child: GestureDetector(
+                          onTap: () async {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return ResetPassword();
+                                });
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 125,
+                            decoration: BoxDecoration(
+                                color: Colors.purple[300],
+                                borderRadius: BorderRadius.circular(50)),
+                            child: const Center(
+                              child: Text(
+                                "forgot password ?",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Fox&Cat'),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),

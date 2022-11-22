@@ -1,8 +1,9 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -59,7 +60,26 @@ class _LoginPageState extends State<LoginPage> {
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
       print(FirebaseAuth.instance.signInWithCredential(credential));
-      Get.to(HomePage());
+      Get.offAll(HomePage());
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      log(e.message.toString());
+      rethrow;
+    }
+  }
+
+  Future loginFB() async {
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      print(FirebaseAuth.instance.signInWithCredential(facebookAuthCredential));
+      Get.offAll(HomePage());
     } on FirebaseAuthException catch (e) {
       setState(() {
         _isLoading = false;
@@ -224,9 +244,9 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(
                             width: 30,
                           ),
-                          const SocialButtons(
+                          SocialButtons(
                             img: "assets/images/facebook.png",
-                            ontap: null,
+                            ontap: loginFB,
                           ),
                           const SizedBox(
                             width: 30,

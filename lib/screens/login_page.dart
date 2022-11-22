@@ -26,29 +26,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  showLoading(context) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Row(
-                children: [
-                  CircularProgressIndicator(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Text("Please wait")
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
@@ -62,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       log("message");
-      Get.to(() => HomePage());
+      Get.offAll(HomePage());
     } on FirebaseAuthException catch (e) {
       setState(() {
         _isLoading = false;

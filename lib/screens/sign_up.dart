@@ -33,33 +33,10 @@ class _SignUpState extends State<SignUp> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       log("Signed Up");
-      Get.to(() => HomePage());
+      Get.offAll(HomePage());
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message, Colors.black38);
     }
-  }
-
-  showLoading(context) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Row(
-                children: [
-                  CircularProgressIndicator(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Text("Please wait")
-                ],
-              ),
-            ),
-          );
-        });
   }
 
   @override

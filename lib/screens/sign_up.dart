@@ -20,19 +20,38 @@ class SignUp extends StatefulWidget {
   State<SignUp> createState() => _SignUpState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 8));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+  }
+
   Future signUp() async {
     try {
+      setState(() {
+        _controller.forward();
+      });
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       log("Signed Up");
       Get.offAll(HomePage());
     } on FirebaseAuthException catch (e) {
+      setState(() {
+        _controller.stop();
+      });
       showSnackBar(context, e.message, Colors.black38);
     }
   }
@@ -85,7 +104,7 @@ class _SignUpState extends State<SignUp> {
                       child: Lottie.asset(
                           "assets/images/9308-welcome-screen-animation.json")),
                   const SizedBox(
-                    height: 50,
+                    height: 40,
                   ),
                   Column(
                     children: [
@@ -120,7 +139,7 @@ class _SignUpState extends State<SignUp> {
                       AppButton(txt: "S I G N  U P", func: signUp),
                     ],
                   ),
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -143,7 +162,12 @@ class _SignUpState extends State<SignUp> {
                         ),
                       )
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Lottie.asset("assets/images/81045-rocket-launch.json",
+                      height: 200, controller: _controller)
                 ],
               )),
             )),

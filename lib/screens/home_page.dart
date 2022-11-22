@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                     fontFamily: GoogleFonts.lato().fontFamily)),
             const SizedBox(height: 10),
             Text(
-              "you've made it to HOME!",
+              "you've made it HOME!",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 23,

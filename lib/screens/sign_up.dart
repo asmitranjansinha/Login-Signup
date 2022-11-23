@@ -90,14 +90,13 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                   const SizedBox(
                     height: 30,
                   ),
-                  Text(
+                  const Text(
                     'Sign Up Now !',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        fontFamily:
-                            GoogleFonts.montserratAlternates().fontFamily),
+                        fontFamily: 'ArcaMajora3'),
                   ),
                   const SizedBox(height: 40),
                   SizedBox(
@@ -141,28 +140,37 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                     ],
                   ),
                   const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "not the first time here ?",
-                        style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            color: Colors.white),
-                      ),
-                      const SizedBox(width: 8),
-                      GestureDetector(
-                        onTap: () {
-                          Get.offAll(const LoginPage());
-                        },
-                        child: Text(
-                          "Log In",
+                  Container(
+                    height: 20,
+                    width: 210,
+                    decoration: BoxDecoration(
+                        color: Colors.purple[300],
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "not the first time here ?",
                           style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.lato().fontFamily),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Fox&Cat',
+                              color: Colors.white70),
                         ),
-                      )
-                    ],
+                        const SizedBox(width: 8),
+                        GestureDetector(
+                          onTap: () {
+                            Get.offAll(const LoginPage());
+                          },
+                          child: const Text(
+                            "Log In",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Fox&Cat'),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 10,

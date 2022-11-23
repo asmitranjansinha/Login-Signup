@@ -2,11 +2,9 @@
 
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login_signup/screens/home_page.dart';
 import 'package:login_signup/screens/intro_page.dart';
@@ -156,7 +154,7 @@ class _LoginPageState extends State<LoginPage>
                         ),
                       ),
                       const Text(
-                        'LOGIN',
+                        'Login !',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
@@ -177,19 +175,17 @@ class _LoginPageState extends State<LoginPage>
                   Column(
                     children: [
                       InputField(
-                        icon: Icons.mail_lock_outlined,
+                        icon: "assets/icons/email.png",
                         hintxt: 'Mail',
-                        obscureText: false,
                         fieldcontroller: _emailController,
-                        type: TextInputType.emailAddress,
+                        type: TextInputType.emailAddress
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      InputField(
-                        icon: Icons.lock_open_outlined,
+                      Inputfield4Password(
+                        icon: "assets/icons/rotation-lock.png",
                         hintxt: "Password",
-                        obscureText: true,
                         fieldcontroller: _passwordController,
                         type: TextInputType.visiblePassword,
                       ),
@@ -216,7 +212,7 @@ class _LoginPageState extends State<LoginPage>
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontFamily: 'Fox&Cat'),
+                                    fontFamily: 'Fox&Cat')
                               ),
                             ),
                           ),

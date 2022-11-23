@@ -5,7 +5,6 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup/screens/home_page.dart';
 import 'package:login_signup/widgets/snack_bar.dart';
 import 'package:lottie/lottie.dart';
@@ -109,32 +108,26 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                   Column(
                     children: [
                       InputField(
-                        icon: Icons.perm_identity,
-                        hintxt: 'Name',
-                        obscureText: false,
-                        fieldcontroller: _nameController,
-                        type: TextInputType.name,
-                      ),
+                          icon: "assets/icons/user.png",
+                          hintxt: 'Name',
+                          fieldcontroller: _nameController,
+                          type: TextInputType.name),
                       const SizedBox(
                         height: 20,
                       ),
                       InputField(
-                        icon: Icons.mail_lock_outlined,
-                        hintxt: 'Mail',
-                        obscureText: false,
-                        fieldcontroller: _emailController,
-                        type: TextInputType.emailAddress,
-                      ),
+                          icon: "assets/icons/email.png",
+                          hintxt: 'Mail',
+                          fieldcontroller: _emailController,
+                          type: TextInputType.emailAddress),
                       const SizedBox(
                         height: 20,
                       ),
-                      InputField(
-                        icon: Icons.lock_open_outlined,
-                        hintxt: "Password",
-                        obscureText: true,
-                        fieldcontroller: _passwordController,
-                        type: TextInputType.visiblePassword,
-                      ),
+                      Inputfield4Password(
+                          icon: "assets/icons/magnifying-glass.png",
+                          hintxt: "Password",
+                          fieldcontroller: _passwordController,
+                          type: TextInputType.visiblePassword),
                       const SizedBox(height: 40),
                       AppButton(txt: "S I G N  U P", func: signUp),
                     ],

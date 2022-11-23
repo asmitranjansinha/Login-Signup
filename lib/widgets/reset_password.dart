@@ -55,9 +55,8 @@ class ResetPassword extends StatelessWidget {
         ],
       ),
       content: InputField(
-        icon: Icons.mail_lock_outlined,
+        icon: "assets/icons/email.png",
         hintxt: "Email",
-        obscureText: false,
         fieldcontroller: _emailController,
         type: TextInputType.emailAddress,
       ),

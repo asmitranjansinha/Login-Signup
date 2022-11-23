@@ -142,8 +142,10 @@ class _LoginPageState extends State<LoginPage>
                     height: 30,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.06,
+                      ),
                       GestureDetector(
                         onTap: () {
                           Get.offAll(const IntroPage());
@@ -153,13 +155,13 @@ class _LoginPageState extends State<LoginPage>
                           color: Colors.white60,
                         ),
                       ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.25),
                       const Text(
-                        'Login !',
+                        'Login',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'ArcaMajora3-Bold'),
+                            fontFamily: 'ArcaMajora3'),
                       )
                     ],
                   ),
@@ -175,11 +177,10 @@ class _LoginPageState extends State<LoginPage>
                   Column(
                     children: [
                       InputField(
-                        icon: "assets/icons/email.png",
-                        hintxt: 'Mail',
-                        fieldcontroller: _emailController,
-                        type: TextInputType.emailAddress
-                      ),
+                          icon: "assets/icons/email.png",
+                          hintxt: 'Mail',
+                          fieldcontroller: _emailController,
+                          type: TextInputType.emailAddress),
                       const SizedBox(
                         height: 20,
                       ),
@@ -207,13 +208,11 @@ class _LoginPageState extends State<LoginPage>
                                 color: Colors.purple[300],
                                 borderRadius: BorderRadius.circular(50)),
                             child: const Center(
-                              child: Text(
-                                "forgot password ?",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Fox&Cat')
-                              ),
+                              child: Text("forgot password ?",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Fox&Cat')),
                             ),
                           ),
                         ),

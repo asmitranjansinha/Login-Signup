@@ -90,7 +90,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                     height: 30,
                   ),
                   const Text(
-                    'Sign Up Now !',
+                    'Sign Up',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40,

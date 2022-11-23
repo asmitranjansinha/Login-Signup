@@ -227,33 +227,43 @@ class _LoginPageState extends State<LoginPage>
                     ],
                   ),
                   const SizedBox(height: 60),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "first time here ?",
-                        style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            color: Colors.white),
-                      ),
-                      const SizedBox(width: 8),
-                      GestureDetector(
-                        onTap: () {
-                          Get.offAll(const SignUp());
-                        },
-                        child: Text(
-                          "Sign Up",
+                  Container(
+                    height: 20,
+                    width: 172,
+                    decoration: BoxDecoration(
+                        color: Colors.purple[300],
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "first time here ?",
                           style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: GoogleFonts.lato().fontFamily),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Fox&Cat',
+                              color: Colors.white70),
                         ),
-                      )
-                    ],
+                        const SizedBox(width: 8),
+                        GestureDetector(
+                          onTap: () {
+                            Get.offAll(const SignUp());
+                          },
+                          child: const Text(
+                            "Sign Up",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Fox&Cat'),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 20),
-                  const Text("_________________________",
-                      style: TextStyle(color: Colors.white)),
-                  const SizedBox(height: 22),
+                  const SizedBox(height: 40),
+                  const Text("----------  OR  ----------",
+                      style:
+                          TextStyle(color: Colors.white, fontFamily: 'koliko')),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

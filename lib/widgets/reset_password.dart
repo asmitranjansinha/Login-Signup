@@ -35,22 +35,20 @@ class ResetPassword extends StatelessWidget {
     return AlertDialog(
       backgroundColor: const Color(0xFF804FB3),
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(
-              Icons.arrow_back_ios_new,
-              color: Colors.grey,
-            ),
-          ),
-          Text(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset(
+                "assets/icons/close.png",
+                scale: 20,
+                color: Colors.white54,
+              )),
+          const Text(
             "Reset Password",
-            style: TextStyle(
-                color: Colors.white70,
-                fontFamily: GoogleFonts.montserrat().fontFamily),
+            style: TextStyle(color: Colors.white70, fontFamily: "koliko"),
           ),
         ],
       ),

@@ -47,7 +47,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       log("Signed Up");
-      Get.offAll(HomePage());
+      Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
     } on FirebaseAuthException catch (e) {
       setState(() {
         _controller.stop();
@@ -152,7 +152,8 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                         const SizedBox(width: 8),
                         GestureDetector(
                           onTap: () {
-                            Get.offAll(const LoginPage());
+                            Get.offAll(const LoginPage(),
+                                transition: Transition.zoom);
                           },
                           child: const Text(
                             "Log In",

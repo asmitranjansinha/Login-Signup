@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage>
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       log("message");
-      Get.offAll(HomePage());
+      Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message, Colors.black38);
       setState(() {
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage>
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
       print(FirebaseAuth.instance.signInWithCredential(credential));
-      Get.offAll(HomePage());
+      Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
     } on FirebaseAuthException catch (e) {
       setState(() {
         _controller.stop();
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage>
       final OAuthCredential facebookAuthCredential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       print(FirebaseAuth.instance.signInWithCredential(facebookAuthCredential));
-      Get.offAll(HomePage());
+      Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
     } on FirebaseAuthException catch (e) {
       setState(() {
         _controller.stop();
@@ -148,11 +148,13 @@ class _LoginPageState extends State<LoginPage>
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.offAll(const IntroPage());
+                          Get.offAll(const IntroPage(),
+                              transition: Transition.leftToRightWithFade);
                         },
-                        child: const Icon(
-                          Icons.arrow_back_ios_new,
-                          color: Colors.white60,
+                        child: Image.asset(
+                          "assets/icons/back-button.png",
+                          scale: 18,
+                          color: Colors.white54,
                         ),
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.25),
@@ -241,7 +243,8 @@ class _LoginPageState extends State<LoginPage>
                         const SizedBox(width: 8),
                         GestureDetector(
                           onTap: () {
-                            Get.offAll(const SignUp());
+                            Get.offAll(const SignUp(),
+                                transition: Transition.zoom);
                           },
                           child: const Text(
                             "Sign Up",

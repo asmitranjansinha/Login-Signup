@@ -75,7 +75,8 @@ class _IntroPageState extends State<IntroPage> {
                   AppButton(
                       txt: "L O G I N",
                       func: () {
-                        Get.to(() => const LoginPage());
+                        Get.to(() => const LoginPage(),
+                            transition: Transition.rightToLeftWithFade);
                       }),
                   const SizedBox(
                     height: 30,
@@ -83,7 +84,8 @@ class _IntroPageState extends State<IntroPage> {
                   AppButton(
                       txt: "S I G N  U P",
                       func: () {
-                        Get.to(() => const SignUp());
+                        Get.to(() => const SignUp(),
+                            transition: Transition.rightToLeftWithFade);
                       }),
                 ],
               )),

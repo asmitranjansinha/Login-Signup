@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -51,6 +52,8 @@ class _LoginPageState extends State<LoginPage>
       setState(() {
         _controller.stop();
       });
+      log(e.message.toString());
+      rethrow;
     }
   }
 
@@ -67,6 +70,7 @@ class _LoginPageState extends State<LoginPage>
       print(FirebaseAuth.instance.signInWithCredential(credential));
       Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
     } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message, Colors.black38);
       setState(() {
         _controller.stop();
       });
@@ -86,16 +90,31 @@ class _LoginPageState extends State<LoginPage>
       print(FirebaseAuth.instance.signInWithCredential(facebookAuthCredential));
       Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
     } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message, Colors.black38);
       setState(() {
         _controller.stop();
       });
       log(e.message.toString());
       rethrow;
-    } on Exception catch (e) {
+    }
+  }
+
+  Future loginTwitter() async {
+    try {
+      TwitterAuthProvider twitterProvider = TwitterAuthProvider();
+      if (kIsWeb) {
+        await FirebaseAuth.instance.signInWithPopup(twitterProvider);
+        Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
+      } else {
+        await FirebaseAuth.instance.signInWithProvider(twitterProvider);
+        Get.offAll(HomePage(), transition: Transition.rightToLeftWithFade);
+      }
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message, Colors.black38);
       setState(() {
         _controller.stop();
       });
-      log(e.toString());
+      log(e.message.toString());
       rethrow;
     }
   }
@@ -279,9 +298,9 @@ class _LoginPageState extends State<LoginPage>
                       const SizedBox(
                         width: 30,
                       ),
-                      const SocialButtons(
+                      SocialButtons(
                         img: "assets/images/twitter.png",
-                        ontap: null,
+                        ontap: loginTwitter,
                       )
                     ],
                   )

@@ -32,11 +32,17 @@ class ProfilePage extends StatelessWidget {
             ),
             Text(
               "Name : ${user!.displayName}",
-              style: const TextStyle(color: Colors.white, fontSize: 25),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  overflow: TextOverflow.fade),
             ),
             const SizedBox(height: 20),
             Text("Email : ${user!.email}",
-                style: const TextStyle(color: Colors.white, fontSize: 25)),
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    overflow: TextOverflow.fade)),
             const SizedBox(height: 50),
           ],
         )),

@@ -60,7 +60,10 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Get.to(ProfilePage());
                 },
-                child: const Text("Profile")),
+                child: const Text(
+                  "Profile",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                )),
           ],
         )),
       ),

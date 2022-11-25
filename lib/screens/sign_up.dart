@@ -58,6 +58,8 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -71,8 +73,8 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
         body: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+              height: height,
+              width: width,
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -86,8 +88,8 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
               child: SafeArea(
                   child: Column(
                 children: [
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: height / 50,
                   ),
                   const Text(
                     'Sign Up',
@@ -97,13 +99,13 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                         fontWeight: FontWeight.bold,
                         fontFamily: 'ArcaMajora3'),
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: height / 30),
                   SizedBox(
-                      height: 80,
+                      height: height / 10,
                       child: Lottie.asset(
                           "assets/images/9308-welcome-screen-animation.json")),
-                  const SizedBox(
-                    height: 40,
+                  SizedBox(
+                    height: height / 30,
                   ),
                   Column(
                     children: [
@@ -112,27 +114,27 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                           hintxt: 'Name',
                           fieldcontroller: _nameController,
                           type: TextInputType.name),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: height / 35,
                       ),
                       InputField(
                           icon: "assets/icons/email.png",
                           hintxt: 'Mail',
                           fieldcontroller: _emailController,
                           type: TextInputType.emailAddress),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: height / 35,
                       ),
                       Inputfield4Password(
                           icon: "assets/icons/magnifying-glass.png",
                           hintxt: "Password",
                           fieldcontroller: _passwordController,
                           type: TextInputType.visiblePassword),
-                      const SizedBox(height: 40),
+                      SizedBox(height: height / 25),
                       AppButton(txt: "S I G N  U P", func: signUp),
                     ],
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: height / 22),
                   Container(
                     height: 20,
                     width: 210,
@@ -149,7 +151,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                               fontFamily: 'Fox&Cat',
                               color: Colors.white70),
                         ),
-                        const SizedBox(width: 8),
+                        SizedBox(width: width/60),
                         GestureDetector(
                           onTap: () {
                             Get.offAll(const LoginPage(),
@@ -166,8 +168,8 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: height/150,
                   ),
                   Lottie.asset("assets/images/81045-rocket-launch.json",
                       height: 200, controller: _controller)

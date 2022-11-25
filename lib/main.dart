@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         home: const MainPage(),
         theme: ThemeData(
-            fontFamily: GoogleFonts.openSans().fontFamily,
+            fontFamily: "koliko",
+            textTheme: const TextTheme(
+              subtitle1: TextStyle(color: Colors.black87),
+            ),
             primarySwatch: Colors.purple),
         debugShowCheckedModeBanner: false);
   }

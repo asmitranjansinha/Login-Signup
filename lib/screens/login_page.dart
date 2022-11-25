@@ -129,6 +129,8 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -142,8 +144,8 @@ class _LoginPageState extends State<LoginPage>
         body: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+              height: height,
+              width: width,
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -157,8 +159,8 @@ class _LoginPageState extends State<LoginPage>
               child: SafeArea(
                   child: Column(
                 children: [
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: height / 50,
                   ),
                   Row(
                     children: [
@@ -186,14 +188,14 @@ class _LoginPageState extends State<LoginPage>
                       )
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: height / 80),
                   SizedBox(
-                      height: 200,
+                      height: height / 4.3,
                       child: Lottie.asset(
                           "assets/images/113519-cyber-security.json",
                           controller: _controller)),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: height / 80,
                   ),
                   Column(
                     children: [
@@ -202,8 +204,8 @@ class _LoginPageState extends State<LoginPage>
                           hintxt: 'Mail',
                           fieldcontroller: _emailController,
                           type: TextInputType.emailAddress),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: height / 35,
                       ),
                       Inputfield4Password(
                         icon: "assets/icons/rotation-lock.png",
@@ -211,7 +213,7 @@ class _LoginPageState extends State<LoginPage>
                         fieldcontroller: _passwordController,
                         type: TextInputType.visiblePassword,
                       ),
-                      const SizedBox(height: 22),
+                      SizedBox(height: height / 35),
                       Padding(
                         padding: const EdgeInsets.only(left: 150),
                         child: GestureDetector(
@@ -223,8 +225,8 @@ class _LoginPageState extends State<LoginPage>
                                 });
                           },
                           child: Container(
-                            height: 20,
-                            width: 125,
+                            height: height / 42,
+                            width: width / 3.1,
                             decoration: BoxDecoration(
                                 color: Colors.purple[300],
                                 borderRadius: BorderRadius.circular(50)),
@@ -238,14 +240,14 @@ class _LoginPageState extends State<LoginPage>
                           ),
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: height / 25),
                       AppButton(txt: "L O G I N", func: logIn),
                     ],
                   ),
                   const SizedBox(height: 60),
                   Container(
-                    height: 20,
-                    width: 172,
+                    height: height / 42,
+                    width: width / 2.2,
                     decoration: BoxDecoration(
                         color: Colors.purple[300],
                         borderRadius: BorderRadius.circular(50)),
@@ -259,7 +261,7 @@ class _LoginPageState extends State<LoginPage>
                               fontFamily: 'Fox&Cat',
                               color: Colors.white70),
                         ),
-                        const SizedBox(width: 8),
+                        SizedBox(width: width / 50),
                         GestureDetector(
                           onTap: () {
                             Get.offAll(const SignUp(),
@@ -276,11 +278,11 @@ class _LoginPageState extends State<LoginPage>
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: height / 20),
                   const Text("----------  OR  ----------",
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'koliko')),
-                  const SizedBox(height: 30),
+                  SizedBox(height: height / 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -288,15 +290,15 @@ class _LoginPageState extends State<LoginPage>
                         img: "assets/images/google.png",
                         ontap: loginGoogle,
                       ),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: width / 15,
                       ),
                       SocialButtons(
                         img: "assets/images/facebook.png",
                         ontap: loginFB,
                       ),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: width / 15,
                       ),
                       SocialButtons(
                         img: "assets/images/twitter.png",

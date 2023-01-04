@@ -151,7 +151,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                               fontFamily: 'Fox&Cat',
                               color: Colors.white70),
                         ),
-                        SizedBox(width: width/60),
+                        SizedBox(width: width / 60),
                         GestureDetector(
                           onTap: () {
                             Get.offAll(const LoginPage(),
@@ -169,7 +169,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   SizedBox(
-                    height: height/150,
+                    height: height / 150,
                   ),
                   Lottie.asset("assets/images/81045-rocket-launch.json",
                       height: 200, controller: _controller)
